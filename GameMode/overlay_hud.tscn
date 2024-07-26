@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgj2mj2udfymj"]
+
+[ext_resource type="Script" path="res://GameMode/overlay_hud.gd" id="1_7ffyw"]
+[ext_resource type="Texture2D" uid="uid://d1prylieuf2rw" path="res://GameMode/beye64.png" id="2_w0kto"]
+
+[node name="OverlayHUD" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_7ffyw")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("2_w0kto")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0.772549, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 7
+theme_override_font_sizes/font_size = 24
+text = "100 %"

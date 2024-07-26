@@ -1,0 +1,401 @@
+[gd_scene load_steps=5 format=3 uid="uid://dv72xfigq8dwt"]
+
+[ext_resource type="Script" path="res://Menu.gd" id="1_ovk6f"]
+[ext_resource type="FontFile" uid="uid://dwrgp5u4tsq8f" path="res://Orbitron-VariableFont_wght.ttf" id="2_g8qyj"]
+
+[sub_resource type="Gradient" id="Gradient_twi4c"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2xv3e"]
+gradient = SubResource("Gradient_twi4c")
+width = 100
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ovk6f")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="spacer2" type="Control" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Game" type="MarginContainer" parent="PanelContainer/VBoxContainer/TabContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Vbox" type="VBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Game"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Game/Vbox"]
+layout_mode = 2
+text = "Filter level : 0"
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Game/Vbox"]
+layout_mode = 2
+text = "Score : 0"
+
+[node name="Label3" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Game/Vbox"]
+layout_mode = 2
+text = "Current screen : 0"
+
+[node name="spacer" type="Control" parent="PanelContainer/VBoxContainer/TabContainer/Game/Vbox"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="PanelContainer/VBoxContainer/TabContainer/Game/Vbox"]
+layout_mode = 2
+button_pressed = true
+text = "Game Mode"
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer/TabContainer/Game/Vbox"]
+layout_mode = 2
+
+[node name="CheckBox2" type="CheckBox" parent="PanelContainer/VBoxContainer/TabContainer/Game/Vbox"]
+layout_mode = 2
+button_pressed = true
+text = "HUD Visible"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Game/Vbox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Game/Vbox/HBoxContainer"]
+layout_mode = 2
+text = "Horizontal position"
+
+[node name="HSliderHoriz" type="HSlider" parent="PanelContainer/VBoxContainer/TabContainer/Game/Vbox/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+max_value = 0.9
+step = 0.02
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Game/Vbox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Game/Vbox/HBoxContainer2"]
+layout_mode = 2
+text = "Vertical position     "
+
+[node name="HSliderVert" type="HSlider" parent="PanelContainer/VBoxContainer/TabContainer/Game/Vbox/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+max_value = 0.97
+step = 0.02
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Game/Vbox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Game/Vbox/HBoxContainer3"]
+layout_mode = 2
+text = "HUD Size                   "
+
+[node name="HSliderScale" type="HSlider" parent="PanelContainer/VBoxContainer/TabContainer/Game/Vbox/HBoxContainer3"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+min_value = 0.1
+max_value = 5.0
+step = 0.05
+value = 1.0
+
+[node name="HSeparator2" type="HSeparator" parent="PanelContainer/VBoxContainer/TabContainer/Game/Vbox"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/TabContainer/Game/Vbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Start a new game"
+
+[node name="Censor" type="MarginContainer" parent="PanelContainer/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer/TabContainer/Censor"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+follow_focus = true
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 2
+
+[node name="Vbox" type="VBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Censor/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Censor/ScrollContainer/Vbox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Censor/ScrollContainer/Vbox/HBoxContainer"]
+layout_mode = 2
+text = "Censor text : "
+
+[node name="TextEdit" type="TextEdit" parent="PanelContainer/VBoxContainer/TabContainer/Censor/ScrollContainer/Vbox/HBoxContainer"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+text = "Beta Keep Out "
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer/TabContainer/Censor/ScrollContainer/Vbox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Censor/ScrollContainer/Vbox"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Create your custom censor. (only when Game Mode is off)"
+autowrap_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="PanelContainer/VBoxContainer/TabContainer/Censor/ScrollContainer/Vbox"]
+layout_mode = 2
+item_count = 5
+selected = 0
+popup/item_0/text = "Black Box"
+popup/item_0/id = 0
+popup/item_1/text = "Glitched Box"
+popup/item_1/id = 1
+popup/item_2/text = "Subliminal Messages"
+popup/item_2/id = 2
+popup/item_3/text = "Repeating Text"
+popup/item_3/id = 3
+popup/item_4/text = "Custom Texture"
+popup/item_4/id = 4
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Censor/ScrollContainer/Vbox"]
+layout_mode = 2
+text = "Censor body parts"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/VBoxContainer/TabContainer/Censor/ScrollContainer/Vbox"]
+layout_mode = 2
+columns = 2
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Censor/ScrollContainer/Vbox/GridContainer"]
+layout_mode = 2
+text = "Porn (holes)"
+
+[node name="CheckButton1" type="CheckButton" parent="PanelContainer/VBoxContainer/TabContainer/Censor/ScrollContainer/Vbox/GridContainer"]
+layout_mode = 2
+button_pressed = true
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Censor/ScrollContainer/Vbox/GridContainer"]
+layout_mode = 2
+text = "Sexy (bikini)"
+
+[node name="CheckButton2" type="CheckButton" parent="PanelContainer/VBoxContainer/TabContainer/Censor/ScrollContainer/Vbox/GridContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Censor/ScrollContainer/Vbox/GridContainer"]
+layout_mode = 2
+text = "Cute (face, dressed)"
+
+[node name="CheckButton3" type="CheckButton" parent="PanelContainer/VBoxContainer/TabContainer/Censor/ScrollContainer/Vbox/GridContainer"]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Censor/ScrollContainer/Vbox/GridContainer"]
+layout_mode = 2
+text = "Beta (armpits, feet)"
+
+[node name="CheckButton4" type="CheckButton" parent="PanelContainer/VBoxContainer/TabContainer/Censor/ScrollContainer/Vbox/GridContainer"]
+layout_mode = 2
+
+[node name="Label5" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Censor/ScrollContainer/Vbox/GridContainer"]
+layout_mode = 2
+text = "Male"
+
+[node name="CheckButton5" type="CheckButton" parent="PanelContainer/VBoxContainer/TabContainer/Censor/ScrollContainer/Vbox/GridContainer"]
+layout_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="PanelContainer/VBoxContainer/TabContainer/Censor/ScrollContainer/Vbox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Censor/ScrollContainer/Vbox"]
+layout_mode = 2
+
+[node name="Label" type="Button" parent="PanelContainer/VBoxContainer/TabContainer/Censor/ScrollContainer/Vbox/HBoxContainer2"]
+layout_mode = 2
+text = "Load your custom texture"
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/TabContainer/Censor/ScrollContainer/Vbox/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = SubResource("GradientTexture1D_2xv3e")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Audio" type="MarginContainer" parent="PanelContainer/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Vbox" type="VBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Audio"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="spacer" type="Control" parent="PanelContainer/VBoxContainer/TabContainer/Audio/Vbox"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Audio/Vbox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Audio/Vbox/HBoxContainer"]
+layout_mode = 2
+text = "Time between comments"
+
+[node name="HSliderCommentsCD" type="HSlider" parent="PanelContainer/VBoxContainer/TabContainer/Audio/Vbox/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+min_value = 5.0
+max_value = 9999.0
+value = 20.0
+exp_edit = true
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Audio/Vbox/HBoxContainer"]
+custom_minimum_size = Vector2(45, 20)
+layout_mode = 2
+text = "20 s"
+clip_text = true
+
+[node name="Performance" type="MarginContainer" parent="PanelContainer/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Vbox" type="VBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Performance"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="spacer" type="Control" parent="PanelContainer/VBoxContainer/TabContainer/Performance/Vbox"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Performance/Vbox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Performance/Vbox/HBoxContainer"]
+layout_mode = 2
+text = "Time between detections"
+
+[node name="HSliderDetectionsCD" type="HSlider" parent="PanelContainer/VBoxContainer/TabContainer/Performance/Vbox/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+max_value = 2.0
+step = 0.05
+value = 0.5
+
+[node name="Timer" type="Timer" parent="PanelContainer/VBoxContainer/TabContainer/Performance/Vbox/HBoxContainer/HSliderDetectionsCD"]
+one_shot = true
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Performance/Vbox/HBoxContainer"]
+custom_minimum_size = Vector2(45, 20)
+layout_mode = 2
+text = "0.5 s"
+clip_text = true
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer/TabContainer/Performance/Vbox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="CheckBoxEco" type="CheckBox" parent="PanelContainer/VBoxContainer/TabContainer/Performance/Vbox"]
+layout_mode = 2
+button_pressed = true
+text = "Economy mode"
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Performance/Vbox"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "If no censor in 10 seconds, will only trigger one detection every 5 seconds."
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_fonts/font = ExtResource("2_g8qyj")
+theme_override_font_sizes/font_size = 18
+text = "Forbidden !"
+
+[node name="ExitButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+modulate = Color(1, 0, 0, 1)
+custom_minimum_size = Vector2(150, 100)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 25
+text = "Exit S4B"
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_fonts/font = ExtResource("2_g8qyj")
+theme_override_font_sizes/font_size = 18
+text = "Forbidden !"
+
+[node name="spacer" type="Control" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[connection signal="toggled" from="PanelContainer/VBoxContainer/TabContainer/Game/Vbox/CheckBox" to="." method="_on_check_box_toggled"]
+[connection signal="toggled" from="PanelContainer/VBoxContainer/TabContainer/Game/Vbox/CheckBox2" to="." method="_on_check_box_2_toggled"]
+[connection signal="value_changed" from="PanelContainer/VBoxContainer/TabContainer/Game/Vbox/HBoxContainer/HSliderHoriz" to="." method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="PanelContainer/VBoxContainer/TabContainer/Game/Vbox/HBoxContainer2/HSliderVert" to="." method="_on_h_slider_vert_value_changed"]
+[connection signal="value_changed" from="PanelContainer/VBoxContainer/TabContainer/Game/Vbox/HBoxContainer3/HSliderScale" to="." method="_on_h_slider_scale_value_changed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Game/Vbox/Button" to="." method="_on_button_restart_pressed"]
+[connection signal="text_changed" from="PanelContainer/VBoxContainer/TabContainer/Censor/ScrollContainer/Vbox/HBoxContainer/TextEdit" to="." method="_on_text_edit_text_changed"]
+[connection signal="item_selected" from="PanelContainer/VBoxContainer/TabContainer/Censor/ScrollContainer/Vbox/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="toggled" from="PanelContainer/VBoxContainer/TabContainer/Censor/ScrollContainer/Vbox/GridContainer/CheckButton1" to="." method="_on_check_button_custom_toggled" binds= [0]]
+[connection signal="toggled" from="PanelContainer/VBoxContainer/TabContainer/Censor/ScrollContainer/Vbox/GridContainer/CheckButton2" to="." method="_on_check_button_custom_toggled" binds= [1]]
+[connection signal="toggled" from="PanelContainer/VBoxContainer/TabContainer/Censor/ScrollContainer/Vbox/GridContainer/CheckButton3" to="." method="_on_check_button_custom_toggled" binds= [2]]
+[connection signal="toggled" from="PanelContainer/VBoxContainer/TabContainer/Censor/ScrollContainer/Vbox/GridContainer/CheckButton4" to="." method="_on_check_button_custom_toggled" binds= [3]]
+[connection signal="toggled" from="PanelContainer/VBoxContainer/TabContainer/Censor/ScrollContainer/Vbox/GridContainer/CheckButton5" to="." method="_on_check_button_custom_toggled" binds= [4]]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/TabContainer/Censor/ScrollContainer/Vbox/HBoxContainer2/Label" to="." method="_on_label_texture_pressed"]
+[connection signal="value_changed" from="PanelContainer/VBoxContainer/TabContainer/Audio/Vbox/HBoxContainer/HSliderCommentsCD" to="." method="_on_h_slider_comments_cd_value_changed"]
+[connection signal="value_changed" from="PanelContainer/VBoxContainer/TabContainer/Performance/Vbox/HBoxContainer/HSliderDetectionsCD" to="." method="_on_h_slider_detections_cd_value_changed"]
+[connection signal="timeout" from="PanelContainer/VBoxContainer/TabContainer/Performance/Vbox/HBoxContainer/HSliderDetectionsCD/Timer" to="." method="_on_timer_cd_duration_timeout"]
+[connection signal="toggled" from="PanelContainer/VBoxContainer/TabContainer/Performance/Vbox/CheckBoxEco" to="." method="_on_check_box_eco_toggled"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

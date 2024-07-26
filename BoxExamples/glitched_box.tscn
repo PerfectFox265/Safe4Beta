@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://5aggk6q0epkm"]
+
+[ext_resource type="PackedScene" uid="uid://ht77w61hmtbs" path="res://BoxExamples/base_censor_box.tscn" id="1_4slas"]
+[ext_resource type="Script" path="res://BoxExamples/GlitchedBox.gd" id="1_we0pr"]
+[ext_resource type="Shader" path="res://BoxExamples/glitched.gdshader" id="2_7x20x"]
+[ext_resource type="Texture2D" uid="uid://pa1t21f5c02h" path="res://BoxExamples/smooth_border.png" id="3_s17jl"]
+
+[sub_resource type="Gradient" id="Gradient_mii4r"]
+offsets = PackedFloat32Array(0.155039, 0.744186)
+colors = PackedColorArray(0.686275, 0, 0, 1, 0.0509804, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4kiuh"]
+gradient = SubResource("Gradient_mii4r")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kgq64"]
+shader = ExtResource("2_7x20x")
+shader_parameter/shake_power = 0.03
+shader_parameter/shake_rate = 0.8
+shader_parameter/shake_speed = 10.0
+shader_parameter/shake_block_size = 40.5
+shader_parameter/shake_color_rate = 0.005
+shader_parameter/back_screen_texture = SubResource("GradientTexture1D_4kiuh")
+
+[node name="GlitchedBox" instance=ExtResource("1_4slas")]
+script = ExtResource("1_we0pr")
+
+[node name="TextureRect" parent="." index="0"]
+material = SubResource("ShaderMaterial_kgq64")
+offset_right = 396.0
+offset_bottom = 221.0
+texture = ExtResource("3_s17jl")
+
+[node name="RichTextLabel" type="Label" parent="TextureRect" index="0"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -28.5
+offset_right = 28.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+text = "No info"
+
+[node name="RichTextLabel2" type="Label" parent="TextureRect" index="1"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -70.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+text = "No info 2"

@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://crrvnqcemo2pe"]
+
+[ext_resource type="Script" path="res://FullScreenGlitched.gd" id="1_bnxsr"]
+[ext_resource type="Shader" path="res://BoxExamples/glitched.gdshader" id="2_3d6hb"]
+[ext_resource type="AudioStream" uid="uid://sx7th2bticnd" path="res://audio/ui/glitch_0.ogg" id="3_u80pk"]
+[ext_resource type="AudioStream" uid="uid://gws62sngnga3" path="res://audio/ui/glitch_1.ogg" id="4_7a6di"]
+[ext_resource type="AudioStream" uid="uid://b85d7fdbp05m7" path="res://audio/ui/glitch_2.ogg" id="5_8nitt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5a5r8"]
+shader = ExtResource("2_3d6hb")
+shader_parameter/shake_power = 0.03
+shader_parameter/shake_rate = 0.2
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 40.5
+shader_parameter/shake_color_rate = 0.01
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_env4p"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_njhya"]
+random_pitch = 1.2
+streams_count = 3
+stream_0/stream = ExtResource("3_u80pk")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("4_7a6di")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("5_8nitt")
+stream_2/weight = 1.0
+
+[node name="FullScreenGlitched" type="Node2D"]
+script = ExtResource("1_bnxsr")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_5a5r8")
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("PlaceholderTexture2D_env4p")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_njhya")
+autoplay = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

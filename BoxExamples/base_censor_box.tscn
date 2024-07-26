@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://ht77w61hmtbs"]
+
+[ext_resource type="Script" path="res://BoxExamples/BaseCensorBox.gd" id="1_l4cx6"]
+
+[sub_resource type="Gradient" id="Gradient_40scf"]
+offsets = PackedFloat32Array(0.975155, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wui3k"]
+gradient = SubResource("Gradient_40scf")
+fill_from = Vector2(1, 0)
+
+[node name="BaseCensorBox" type="Node2D"]
+script = ExtResource("1_l4cx6")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("GradientTexture2D_wui3k")

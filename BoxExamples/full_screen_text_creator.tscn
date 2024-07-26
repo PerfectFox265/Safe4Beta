@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://cajbx2tg64fol"]
+
+[ext_resource type="FontFile" uid="uid://dwrgp5u4tsq8f" path="res://Orbitron-VariableFont_wght.ttf" id="1_5l2i5"]
+[ext_resource type="Script" path="res://BoxExamples/full_screen_text_creator.gd" id="1_hk23s"]
+
+[sub_resource type="Gradient" id="Gradient_pndd7"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rqsgr"]
+gradient = SubResource("Gradient_pndd7")
+
+[node name="SubViewport" type="SubViewport"]
+size = Vector2i(800, 500)
+render_target_update_mode = 1
+script = ExtResource("1_hk23s")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+clip_children = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_rqsgr")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 25.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = ExtResource("1_5l2i5")
+theme_override_font_sizes/normal_font_size = 30
+text = "Beta Keep Out Beta Keep Out Beta Keep Out Beta Keep Out Beta Keep Out Beta Keep Out Beta Keep Out Beta Keep Out Beta Keep Out Beta Keep Out Beta Keep Out Beta Keep Out Beta Keep Out Beta Keep Out Beta Keep Out Beta Keep Out Beta Keep Out Beta Keep Out Beta Keep Out Beta Keep Out eta Keep Out Beta Keep Out "
+scroll_active = false
+autowrap_mode = 1
+shortcut_keys_enabled = false

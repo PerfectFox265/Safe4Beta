@@ -1,0 +1,125 @@
+[gd_scene load_steps=32 format=3 uid="uid://ddvjgqct4psrm"]
+
+[ext_resource type="AudioStream" uid="uid://dwgtfnpwkpbj1" path="res://audio/game/intro_0.mp3" id="1_qwr4r"]
+[ext_resource type="Script" path="res://beta_voices.gd" id="1_tsqw1"]
+[ext_resource type="AudioStream" uid="uid://p5wx1dqeywp7" path="res://audio/game/intro_1.mp3" id="2_dkiv6"]
+[ext_resource type="AudioStream" uid="uid://w1e4sa4xfo8v" path="res://audio/game/tolvl0_0.mp3" id="3_3nxpd"]
+[ext_resource type="AudioStream" uid="uid://b5o0edfx3wqif" path="res://audio/game/tolvl1_1.mp3" id="4_1bpnb"]
+[ext_resource type="AudioStream" uid="uid://dhsggvxw5g1tn" path="res://audio/game/tolvl0_1.mp3" id="4_kjiug"]
+[ext_resource type="AudioStream" uid="uid://bgqyywwqfw6t6" path="res://audio/game/tolvl1_0.mp3" id="5_a6d54"]
+[ext_resource type="AudioStream" uid="uid://b870s7267ty1x" path="res://audio/game/tolvl2_0.mp3" id="6_h6fli"]
+[ext_resource type="AudioStream" uid="uid://f5qvjrmt0wvs" path="res://audio/game/tolvl2_1.mp3" id="7_jwndo"]
+[ext_resource type="AudioStream" uid="uid://tarpu57fsotp" path="res://audio/game/tolvl3_0.mp3" id="8_qqp1d"]
+[ext_resource type="AudioStream" uid="uid://3hfyqkwus3pp" path="res://audio/game/tolvl3_1.mp3" id="9_hnc66"]
+[ext_resource type="AudioStream" uid="uid://b7d5ecvrmcxwa" path="res://audio/game/tolvl-1_0.mp3" id="12_w53fx"]
+[ext_resource type="AudioStream" uid="uid://cgrl16uuepf4l" path="res://audio/game/tolvl-1_1.mp3" id="13_u2koj"]
+[ext_resource type="AudioStream" uid="uid://ckcbqhjl0rhxp" path="res://audio/game/lowerlvl_0.mp3" id="14_5tiqf"]
+[ext_resource type="AudioStream" uid="uid://olbf50qjhn7p" path="res://audio/game/lowerlvl_1.mp3" id="15_5knjd"]
+[ext_resource type="AudioStream" uid="uid://dxn535vkvf4gb" path="res://audio/comments/basic1.ogg" id="16_g2r7r"]
+[ext_resource type="AudioStream" uid="uid://cquo3x1qkt7wg" path="res://audio/comments/basic2.ogg" id="17_f4433"]
+[ext_resource type="AudioStream" uid="uid://blrsreg7t3him" path="res://audio/comments/basic3.ogg" id="18_k6tnv"]
+[ext_resource type="AudioStream" uid="uid://clk2raklb2u8r" path="res://audio/comments/basic4.ogg" id="19_io1hu"]
+[ext_resource type="AudioStream" uid="uid://3rjkyt31obk3" path="res://audio/comments/basic5.ogg" id="20_yaw6m"]
+[ext_resource type="AudioStream" uid="uid://do7tqvslbeui7" path="res://audio/comments/basic6.ogg" id="21_0urj5"]
+[ext_resource type="AudioStream" uid="uid://b2atebqlq0yvy" path="res://audio/comments/basic7.ogg" id="22_eskvn"]
+[ext_resource type="AudioStream" uid="uid://b83b15atx5ukb" path="res://audio/comments/basic8.ogg" id="23_yqyyj"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_od5dw"]
+streams_count = 2
+stream_0/stream = ExtResource("1_qwr4r")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_dkiv6")
+stream_1/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_r83aq"]
+streams_count = 2
+stream_0/stream = ExtResource("4_1bpnb")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("5_a6d54")
+stream_1/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_deplb"]
+streams_count = 2
+stream_0/stream = ExtResource("6_h6fli")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("7_jwndo")
+stream_1/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kpfvy"]
+streams_count = 2
+stream_0/stream = ExtResource("8_qqp1d")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("9_hnc66")
+stream_1/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_a1emu"]
+streams_count = 2
+stream_0/stream = ExtResource("3_3nxpd")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("4_kjiug")
+stream_1/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0g3t3"]
+streams_count = 2
+stream_0/stream = ExtResource("12_w53fx")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("13_u2koj")
+stream_1/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gb33e"]
+streams_count = 2
+stream_0/stream = ExtResource("14_5tiqf")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("15_5knjd")
+stream_1/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5c244"]
+streams_count = 8
+stream_0/stream = ExtResource("16_g2r7r")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("17_f4433")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("18_k6tnv")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("19_io1hu")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("20_yaw6m")
+stream_4/weight = 1.0
+stream_5/stream = ExtResource("21_0urj5")
+stream_5/weight = 1.0
+stream_6/stream = ExtResource("22_eskvn")
+stream_6/weight = 1.0
+stream_7/stream = ExtResource("23_yqyyj")
+stream_7/weight = 1.0
+
+[node name="BetaVoices" type="Node"]
+script = ExtResource("1_tsqw1")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="intro" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_od5dw")
+
+[node name="lvl1" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_r83aq")
+
+[node name="lvl2" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_deplb")
+
+[node name="lvl3" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_kpfvy")
+
+[node name="lvl0" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_a1emu")
+
+[node name="lvl-1" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_0g3t3")
+
+[node name="lowerlvl" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_gb33e")
+
+[node name="basic" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_5c244")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

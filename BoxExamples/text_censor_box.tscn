@@ -1,0 +1,37 @@
+[gd_scene load_steps=9 format=3 uid="uid://cdricldhcb7gd"]
+
+[ext_resource type="PackedScene" uid="uid://ht77w61hmtbs" path="res://BoxExamples/base_censor_box.tscn" id="1_asovy"]
+[ext_resource type="Script" path="res://BoxExamples/TextCensorBox.gd" id="2_j55kq"]
+[ext_resource type="Shader" path="res://BoxExamples/text_censor_box.gdshader" id="3_nehwl"]
+[ext_resource type="Texture2D" uid="uid://b1ty1d5yfnq21" path="res://BoxExamples/Screenshot.png" id="4_pbvph"]
+[ext_resource type="Texture2D" uid="uid://pa1t21f5c02h" path="res://BoxExamples/smooth_border.png" id="5_wxe3f"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_603ji"]
+noise_type = 0
+frequency = 0.0268
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u72sg"]
+invert = true
+noise = SubResource("FastNoiseLite_603ji")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rbtax"]
+shader = ExtResource("3_nehwl")
+shader_parameter/shake_power = 0.001
+shader_parameter/shake_rate = 0.6
+shader_parameter/shake_speed = 10.0
+shader_parameter/shake_block_size = 20.5
+shader_parameter/shake_color_rate = 0.249
+shader_parameter/fs_text_texture = ExtResource("4_pbvph")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_u72sg")
+
+[node name="TextCensorBox" instance=ExtResource("1_asovy")]
+position = Vector2(-1, -1)
+script = ExtResource("2_j55kq")
+textCensor = "Beta Keep Out "
+
+[node name="TextureRect" parent="." index="0"]
+clip_children = 2
+material = SubResource("ShaderMaterial_rbtax")
+offset_right = 626.0
+offset_bottom = 317.0
+texture = ExtResource("5_wxe3f")

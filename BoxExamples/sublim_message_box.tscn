@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://234nxgckdlv0"]
+
+[ext_resource type="PackedScene" uid="uid://ht77w61hmtbs" path="res://BoxExamples/base_censor_box.tscn" id="1_ljnq8"]
+[ext_resource type="Script" path="res://BoxExamples/SublimMessageBox.gd" id="2_it7um"]
+[ext_resource type="FontFile" uid="uid://dwrgp5u4tsq8f" path="res://Orbitron-VariableFont_wght.ttf" id="3_8fuxl"]
+
+[node name="SublimMessageBox" instance=ExtResource("1_ljnq8")]
+position = Vector2(-1, -1)
+script = ExtResource("2_it7um")
+textCensor = "Beta Keep Out "
+timer = 0.1
+
+[node name="TextureRect" parent="." index="0"]
+clip_children = 2
+offset_right = 0.0
+offset_bottom = 0.0
+texture = null
+
+[node name="Label" type="Label" parent="TextureRect" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_8fuxl")
+theme_override_font_sizes/font_size = 30
+text = "Look Away"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="." index="1"]
+wait_time = 0.766572
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

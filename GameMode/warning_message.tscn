@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://b844iu8bl6ul2"]
+
+[ext_resource type="Script" path="res://GameMode/warning_message.gd" id="1_beugp"]
+[ext_resource type="Shader" path="res://GameMode/glitched_warning.gdshader" id="2_72oix"]
+[ext_resource type="Texture2D" uid="uid://cs072wcor5otm" path="res://GameMode/warning_small.png" id="2_g3o3c"]
+[ext_resource type="AudioStream" uid="uid://boktxtfo7grj6" path="res://audio/ui/beep-warning.ogg" id="4_o7vnx"]
+[ext_resource type="AudioStream" uid="uid://boy6c4ppsk3yt" path="res://audio/ui/warning-exited.ogg" id="5_oen13"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x4hbu"]
+shader = ExtResource("2_72oix")
+shader_parameter/shake_power = 0.05
+shader_parameter/shake_rate = 0.5
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 10.0
+shader_parameter/shake_color_rate = 0.02
+shader_parameter/alpha_mult = 0.75
+
+[node name="WarningMessage" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_beugp")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_x4hbu")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -243.5
+offset_top = -173.0
+offset_right = 243.5
+offset_bottom = 173.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_g3o3c")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="AudioStreamPlayerBeep" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_o7vnx")
+volume_db = -3.0
+
+[node name="AudioStreamPlayerSuccess" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_oen13")
+volume_db = -3.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
