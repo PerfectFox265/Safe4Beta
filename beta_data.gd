@@ -65,6 +65,7 @@ var game_data := {
 	custom_censors = 0,
 	custom_censor_mask = int(1),
 	custom_texture = "./fox.png",
+	fps_screen_recorder = 30,
 	#never change old data name to avoid breaking old saves
 }
 

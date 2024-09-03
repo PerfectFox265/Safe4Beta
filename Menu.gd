@@ -16,7 +16,7 @@ func _ready():
 
 
 func apply_menu_config():
-	# all the saved config will be applied at the first frame proccessed
+	# all the saved config will be applied before the first frame proccessed
 	# it's like if the user clicked on all the menu buttons he wants
 	var is_game_mode = BetaData.game_data.game_mode
 	$PanelContainer/VBoxContainer/TabContainer/Game/Vbox/CheckBox.button_pressed = is_game_mode
@@ -36,6 +36,11 @@ func apply_menu_config():
 	$PanelContainer/VBoxContainer/TabContainer/Performance/Vbox/CheckBoxEco.button_pressed = eco_detections
 	var cd_comments = BetaData.game_data.cd_comments
 	$PanelContainer/VBoxContainer/TabContainer/Audio/Vbox/HBoxContainer/HSliderCommentsCD.value = cd_comments
+	setup_custom_censor()
+	var fps_screen_recorder = BetaData.game_data.fps_screen_recorder
+	$PanelContainer/VBoxContainer/TabContainer/Performance/Vbox/HBoxContainer2/HSliderRecorderFPS.value = fps_screen_recorder
+
+func setup_custom_censor():
 	var custom_censor = BetaData.game_data.custom_censors
 	$PanelContainer/VBoxContainer/TabContainer/Censor/ScrollContainer/Vbox/OptionButton.selected = custom_censor
 	var grid_node = get_node("PanelContainer/VBoxContainer/TabContainer/Censor/ScrollContainer/Vbox/GridContainer")
@@ -158,3 +163,8 @@ func _on_button_restart_pressed():
 	await get_tree().create_timer(3.5).timeout
 	BetaData.make_screen_glitched()
 	
+
+
+func _on_h_slider_recorder_fps_value_changed(value):
+	BetaData.game_data.fps_screen_recorder = value
+	$PanelContainer/VBoxContainer/TabContainer/Performance/Vbox/HBoxContainer2/Label2.text = str(value)

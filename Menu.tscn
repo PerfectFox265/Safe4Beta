@@ -295,6 +295,7 @@ theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
 [node name="Vbox" type="VBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Performance"]
+custom_minimum_size = Vector2(380, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 
@@ -339,6 +340,38 @@ custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "If no censor in 10 seconds, will only trigger one detection every 5 seconds."
+autowrap_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="PanelContainer/VBoxContainer/TabContainer/Performance/Vbox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Performance/Vbox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Performance/Vbox/HBoxContainer2"]
+layout_mode = 2
+text = "FPS Screen recorder"
+
+[node name="HSliderRecorderFPS" type="HSlider" parent="PanelContainer/VBoxContainer/TabContainer/Performance/Vbox/HBoxContainer2"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+min_value = 1.0
+max_value = 300.0
+value = 30.0
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Performance/Vbox/HBoxContainer2"]
+custom_minimum_size = Vector2(45, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "30"
+clip_text = true
+
+[node name="Label3" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Performance/Vbox"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Records your screen (for visual effects) at lower FPS to reduce CPU usage."
 autowrap_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
@@ -398,4 +431,5 @@ layout_mode = 2
 [connection signal="value_changed" from="PanelContainer/VBoxContainer/TabContainer/Performance/Vbox/HBoxContainer/HSliderDetectionsCD" to="." method="_on_h_slider_detections_cd_value_changed"]
 [connection signal="timeout" from="PanelContainer/VBoxContainer/TabContainer/Performance/Vbox/HBoxContainer/HSliderDetectionsCD/Timer" to="." method="_on_timer_cd_duration_timeout"]
 [connection signal="toggled" from="PanelContainer/VBoxContainer/TabContainer/Performance/Vbox/CheckBoxEco" to="." method="_on_check_box_eco_toggled"]
+[connection signal="value_changed" from="PanelContainer/VBoxContainer/TabContainer/Performance/Vbox/HBoxContainer2/HSliderRecorderFPS" to="." method="_on_h_slider_recorder_fps_value_changed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

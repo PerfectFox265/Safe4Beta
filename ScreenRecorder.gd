@@ -5,9 +5,8 @@ extends Node
 
 var id_screen = 0
 var _screen_texture: ImageTexture  # dont use this, call get_screen_texture() instead
-var id_frame_last_screen = -1
+var time_frame_last_screen: int = 0
 
-const additional_skipped_frames = 1 # skipped x frames between records
 
 func _ready():
 	id_screen = DisplayServer.window_get_current_screen()
@@ -15,9 +14,9 @@ func _ready():
 
 
 func get_screen_texture():
-	var fc = Engine.get_process_frames()
-	if id_frame_last_screen + additional_skipped_frames > fc:
+	var ct = Time.get_ticks_usec()
+	if time_frame_last_screen + int((1.0/BetaData.game_data.fps_screen_recorder)*(10**6)) > ct:
 		return _screen_texture
-	id_frame_last_screen = fc
+	time_frame_last_screen = ct
 	_screen_texture = ImageTexture.create_from_image(DisplayServer.screen_get_image(id_screen))
 	return _screen_texture
