@@ -50,6 +50,11 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 size_flags_horizontal = 4
 
+[node name="CheckBox" type="CheckBox" parent="PanelContainer/VBoxContainer/TabContainer/Game/Vbox"]
+layout_mode = 2
+button_pressed = true
+text = "Game Mode"
+
 [node name="Label" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Game/Vbox"]
 layout_mode = 2
 text = "Filter level : 0"
@@ -62,14 +67,35 @@ text = "Score : 0"
 layout_mode = 2
 text = "Current screen : 0"
 
+[node name="HBoxContainer4" type="HBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Game/Vbox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Game/Vbox/HBoxContainer4"]
+layout_mode = 2
+tooltip_text = "Multiplier for the gained beta score, allowing the game to be faster or slower."
+mouse_filter = 1
+text = "Score multiplier"
+
+[node name="HSliderXpMult" type="HSlider" parent="PanelContainer/VBoxContainer/TabContainer/Game/Vbox/HBoxContainer4"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+min_value = 0.01
+max_value = 20.0
+step = 0.01
+value = 1.0
+exp_edit = true
+
+[node name="Label4" type="Label" parent="PanelContainer/VBoxContainer/TabContainer/Game/Vbox/HBoxContainer4"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+tooltip_text = "Multiplier for the gained beta score, allowing the game to be faster or slower."
+mouse_filter = 1
+text = "1.0"
+horizontal_alignment = 1
+
 [node name="spacer" type="Control" parent="PanelContainer/VBoxContainer/TabContainer/Game/Vbox"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
-
-[node name="CheckBox" type="CheckBox" parent="PanelContainer/VBoxContainer/TabContainer/Game/Vbox"]
-layout_mode = 2
-button_pressed = true
-text = "Game Mode"
 
 [node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer/TabContainer/Game/Vbox"]
 layout_mode = 2
@@ -414,6 +440,7 @@ custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
 [connection signal="toggled" from="PanelContainer/VBoxContainer/TabContainer/Game/Vbox/CheckBox" to="." method="_on_check_box_toggled"]
+[connection signal="value_changed" from="PanelContainer/VBoxContainer/TabContainer/Game/Vbox/HBoxContainer4/HSliderXpMult" to="." method="_on_h_slider_xp_mult_value_changed"]
 [connection signal="toggled" from="PanelContainer/VBoxContainer/TabContainer/Game/Vbox/CheckBox2" to="." method="_on_check_box_2_toggled"]
 [connection signal="value_changed" from="PanelContainer/VBoxContainer/TabContainer/Game/Vbox/HBoxContainer/HSliderHoriz" to="." method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="PanelContainer/VBoxContainer/TabContainer/Game/Vbox/HBoxContainer2/HSliderVert" to="." method="_on_h_slider_vert_value_changed"]

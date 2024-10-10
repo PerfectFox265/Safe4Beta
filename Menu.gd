@@ -22,6 +22,8 @@ func apply_menu_config():
 	$PanelContainer/VBoxContainer/TabContainer/Game/Vbox/CheckBox.button_pressed = is_game_mode
 	var hud_visible = BetaData.game_data.hud_visible
 	$PanelContainer/VBoxContainer/TabContainer/Game/Vbox/CheckBox2.button_pressed = hud_visible
+	var xp_multiplier = BetaData.game_data.xp_multiplier
+	$PanelContainer/VBoxContainer/TabContainer/Game/Vbox/HBoxContainer4/HSliderXpMult.value = xp_multiplier
 	var hud_x = BetaData.game_data.hud_x
 	$PanelContainer/VBoxContainer/TabContainer/Game/Vbox/HBoxContainer/HSliderHoriz.value = hud_x
 	var hud_y = BetaData.game_data.hud_y
@@ -55,7 +57,9 @@ func _process(_delta):
 	$PanelContainer/VBoxContainer/TabContainer/Game/Vbox/Label2.text = "Next filter progression : " + str(score_percentage) + "%"
 	var lvl = BetaData.game_data.lvl
 	$PanelContainer/VBoxContainer/TabContainer/Game/Vbox/Label.text = "Filter level : " + str(lvl)
-	$PanelContainer/VBoxContainer/TabContainer/Game/Vbox/Label3.text = "Current screen : " + str(snapped(BetaData.current_screen_score_diff, 0.1))
+	const sign2emote = {true: "⚠️", false: "✅"}
+	$PanelContainer/VBoxContainer/TabContainer/Game/Vbox/Label3.text = "Current screen : " + \
+		sign2emote[BetaData.current_screen_score_diff > 0].repeat(int(BetaData.game_data.game_mode) + int(min(7, abs(BetaData.current_screen_score_diff)/2))) 
 	
 
 func _on_exit_button_pressed():
@@ -158,6 +162,7 @@ func _on_FileDialog_file_selected(path: String):
 func _on_button_restart_pressed():
 	BetaData.game_data.lvl = 0
 	BetaData.game_data.score = 0
+	BetaData.set_game_mode(true)
 	$PanelContainer/VBoxContainer/TabContainer/Game/Vbox/CheckBox.button_pressed = true
 	BetaData.overlay.beta_voices.get_node("intro").play()
 	await get_tree().create_timer(3.5).timeout
@@ -168,3 +173,8 @@ func _on_button_restart_pressed():
 func _on_h_slider_recorder_fps_value_changed(value):
 	BetaData.game_data.fps_screen_recorder = value
 	$PanelContainer/VBoxContainer/TabContainer/Performance/Vbox/HBoxContainer2/Label2.text = str(value)
+
+
+func _on_h_slider_xp_mult_value_changed(value):
+	BetaData.game_data.xp_multiplier = value
+	$PanelContainer/VBoxContainer/TabContainer/Game/Vbox/HBoxContainer4/Label4.text = str(value)

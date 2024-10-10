@@ -32,6 +32,6 @@ func _process(_delta):
 func restart_detector(time_between_detection):
 	if pid_detector != -1:
 		OS.kill(pid_detector)
-	pid_detector = OS.create_process(DETECTOR_PATH, [time_between_detection])
+	pid_detector = OS.create_process(DETECTOR_PATH, [time_between_detection, BetaData.overlay.id_screen+1])
 	print("Detector now use ", time_between_detection, " sec CD.")
 	

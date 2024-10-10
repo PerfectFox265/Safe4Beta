@@ -21,9 +21,11 @@ func _ready():
 func make_overlay_fullscreen():
 	# using get_tree().get_root().set_mode(Window.MODE_FULLSCREEN) create a
 	# weird border all around the screen
-	id_screen = DisplayServer.window_get_current_screen()
-	screen_size = DisplayServer.screen_get_size(id_screen)
+	var window_id = get_tree().get_root().get_window_id()
+	id_screen = DisplayServer.window_get_current_screen(window_id)
+	screen_size = DisplayServer.screen_get_size(id_screen) - Vector2i(1, 1)
 	screen_area = screen_size.x * screen_size.y
+	await get_tree().process_frame  # this hopefully reduce the lag at first start
 	get_tree().get_root().set_size(screen_size)
 	get_tree().get_root().set_position(Vector2i(0, 0))
 

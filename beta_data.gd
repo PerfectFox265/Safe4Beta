@@ -47,6 +47,27 @@ const _labels = [
 	"MALE_GENITALIA_EXPOSED",
 ]
 
+const gd := {
+	score = 1,
+	audio = true,
+	lvl = 0,
+	game_mode = true,
+	hud_visible = true,
+	hud_x = 0,
+	hud_y = 0,
+	hud_scale = 1,
+	fs_text_censor = "Beta Keep Out ",
+	cd_detections = 0.1,
+	eco_detections = false,
+	cd_comments = 20,
+	custom_censors = 0,
+	custom_censor_mask = int(1),
+	custom_texture = "./fox.png",
+	fps_screen_recorder = 30,
+	xp_multiplier = 1.0,
+	# this is just a const copy to get names of game_data keys
+}
+
 # lua style dict to store config in json
 # can access with game_data.score or game_data["score"]
 var game_data := {
@@ -66,6 +87,7 @@ var game_data := {
 	custom_censor_mask = int(1),
 	custom_texture = "./fox.png",
 	fps_screen_recorder = 30,
+	xp_multiplier = 1.0,
 	#never change old data name to avoid breaking old saves
 }
 
@@ -97,7 +119,6 @@ func apply_new_config(is_existing_save):
 	# lots of config is done in menu::apply_menu_config()
 	await get_tree().process_frame
 	new_fullscreen_text_texture(game_data.fs_text_censor)
-	overlay.tcp_listner.restart_detector(game_data.cd_detections)
 	if game_data.game_mode:
 		if not is_existing_save:
 			overlay.beta_voices.get_node("intro").play()
@@ -136,6 +157,7 @@ func new_detections(detections):
 	var detections_array = JSON.parse_string(detections)
 	overlay.beta_voices.comment_detections(detections_array)
 	check_eco_mode(detections_array)
+	current_screen_score_diff = 0
 	if not game_data.game_mode:
 		return
 	if len(detections_array) == 0:
@@ -145,7 +167,6 @@ func new_detections(detections):
 		var d_score = d["score"]
 		var d_box = d["box"]
 		current_screen_score_diff += update_score_from_detection(d_class, d_score, d_box)
-	current_screen_score_diff *= sec_between_detection
 	add_score(current_screen_score_diff)
 
 func update_score_from_detection(d_class, d_score, d_box):
@@ -157,7 +178,7 @@ func update_score_from_detection(d_class, d_score, d_box):
 	return score_diff
 
 func add_score(score_diff):
-	game_data.score += score_diff
+	game_data.score += score_diff * game_data.xp_multiplier * sec_between_detection
 	if game_data.score > BetaData.get_score_next_lvl():
 		trigger_warning()
 		return
@@ -191,7 +212,7 @@ func make_screen_glitched():
 func set_game_mode(is_game_mode):
 	game_data.game_mode = is_game_mode
 	overlay.overlay_hud.visible = is_game_mode and game_data.hud_visible
-	if is_game_mode and game_data.score > 0:
+	if is_game_mode and abs(game_data.score) > 0.5:
 		make_screen_glitched()
 
 

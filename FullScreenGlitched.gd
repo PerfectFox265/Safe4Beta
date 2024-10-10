@@ -3,8 +3,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var id_screen = DisplayServer.window_get_current_screen()
-	$TextureRect.size = DisplayServer.screen_get_size(id_screen)
+	$TextureRect.size = BetaData.overlay.screen_size
 	var img = BetaData.screen_recorder.get_screen_texture()
 	$TextureRect.material.set_shader_parameter("back_screen_texture", img)
 

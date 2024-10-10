@@ -170,6 +170,9 @@ if __name__ == "__main__":
     duration_between_detection = 0.2
     if len(sys.argv) > 1:
         duration_between_detection = max(1.0/120., min(10.0, float(sys.argv[1])))
+    screen_id = 1
+    if len(sys.argv) > 2:
+        screen_id = max(1, int(sys.argv[2]))
     
     detector = NudeDetector()
     
@@ -182,7 +185,7 @@ if __name__ == "__main__":
         while True:
             # t_start = time.time_ns()
             
-            img = np.array(sct.grab(sct.monitors[1]))
+            img = np.array(sct.grab(sct.monitors[screen_id]))
             detections = detector.detect(img)
             data_json = json.dumps(detections)
             s.send(data_json.encode())
