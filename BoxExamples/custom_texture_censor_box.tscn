@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://2u1hnl5d78q"]
 
 [ext_resource type="PackedScene" uid="uid://ht77w61hmtbs" path="res://BoxExamples/base_censor_box.tscn" id="1_pjyk3"]
-[ext_resource type="Script" path="res://CustomTextureCensorBox.gd" id="2_b3ouf"]
+[ext_resource type="Script" uid="uid://dtcjdknq44vlx" path="res://CustomTextureCensorBox.gd" id="2_b3ouf"]
 
 [node name="CustomTextureCensorBox" instance=ExtResource("1_pjyk3")]
 script = ExtResource("2_b3ouf")

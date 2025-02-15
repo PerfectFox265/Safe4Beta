@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cgj2mj2udfymj"]
 
-[ext_resource type="Script" path="res://GameMode/overlay_hud.gd" id="1_7ffyw"]
+[ext_resource type="Script" uid="uid://bxbern05sqhrh" path="res://GameMode/overlay_hud.gd" id="1_7ffyw"]
 [ext_resource type="Texture2D" uid="uid://d1prylieuf2rw" path="res://GameMode/beye64.png" id="2_w0kto"]
 
 [node name="OverlayHUD" type="Control"]

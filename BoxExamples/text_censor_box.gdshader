@@ -45,10 +45,10 @@ void fragment( )
 	float margin = 0.45;
 	float margin_y_size = 0.5;
 	float margin_speed = 3.0;
-	float seed_from_y = UV.y/margin_y_size + margin_speed*mtime;
+	float seed_from_y = UV.y/margin_y_size + margin_speed*0.5*mtime;
 	float hmargin_from_y = margin*texture(noise_texture, vec2(seed_from_y, 0.3)).x;
-	float tr2 = 2.0*hmargin_from_y*hmargin_from_y;
+	float tr2 = 1.5*hmargin_from_y*hmargin_from_y;
 	float invisible_margin = float(UV.x > tr2 && UV.x < 1.0-tr2);
-	COLOR.w = invisible_margin * pow(texture(TEXTURE, UV).x, 0.8);
+	COLOR.w = invisible_margin * pow(texture(TEXTURE, UV.xy).r, 0.8);
 }
 

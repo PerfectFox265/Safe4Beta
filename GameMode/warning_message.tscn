@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b844iu8bl6ul2"]
 
-[ext_resource type="Script" path="res://GameMode/warning_message.gd" id="1_beugp"]
-[ext_resource type="Shader" path="res://GameMode/glitched_warning.gdshader" id="2_72oix"]
+[ext_resource type="Script" uid="uid://bec7phy53nf64" path="res://GameMode/warning_message.gd" id="1_beugp"]
+[ext_resource type="Shader" uid="uid://g6br2v1lqhq" path="res://GameMode/glitched_warning.gdshader" id="2_72oix"]
 [ext_resource type="Texture2D" uid="uid://cs072wcor5otm" path="res://GameMode/warning_small.png" id="2_g3o3c"]
 [ext_resource type="AudioStream" uid="uid://boktxtfo7grj6" path="res://audio/ui/beep-warning.ogg" id="4_o7vnx"]
 [ext_resource type="AudioStream" uid="uid://boy6c4ppsk3yt" path="res://audio/ui/warning-exited.ogg" id="5_oen13"]

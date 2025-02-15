@@ -15,7 +15,7 @@ func set_size_and_text(fs_size: Vector2i, text: String):
 	size = fs_size
 	textCensor = text
 	$TextureRect.size = fs_size  # warning but work only this way
-	const char_area = 20*15
+	const char_area = 20*8
 	var texture_area = ($TextureRect.size.x + 10) * $TextureRect.size.y
 	var nbr_repeat_text = 2 + texture_area / (len(textCensor) * char_area)
 	$TextureRect/RichTextLabel.text = textCensor.repeat(int(nbr_repeat_text))

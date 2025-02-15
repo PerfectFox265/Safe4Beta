@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://234nxgckdlv0"]
 
 [ext_resource type="PackedScene" uid="uid://ht77w61hmtbs" path="res://BoxExamples/base_censor_box.tscn" id="1_ljnq8"]
-[ext_resource type="Script" path="res://BoxExamples/SublimMessageBox.gd" id="2_it7um"]
+[ext_resource type="Script" uid="uid://bm4fom2tonuow" path="res://BoxExamples/SublimMessageBox.gd" id="2_it7um"]
 [ext_resource type="FontFile" uid="uid://dwrgp5u4tsq8f" path="res://Orbitron-VariableFont_wght.ttf" id="3_8fuxl"]
 
 [node name="SublimMessageBox" instance=ExtResource("1_ljnq8")]

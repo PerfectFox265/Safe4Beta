@@ -12,10 +12,12 @@ var screen_area: int
 @onready var beta_voices = $BetaVoices
 
 func _ready():
-	get_tree().get_root().set_transparent_background(true)
+	var r : Window = get_tree().get_root()
+	r.set_transparent_background(true)
 	make_overlay_fullscreen()
 	overlay_hud.visible = BetaData.game_data.game_mode
 	warning_message.position = Vector2(screen_size.x/2.0, screen_size.y/2.0)
+	r.exclude_from_capture = true
 
 
 func make_overlay_fullscreen():
@@ -27,7 +29,8 @@ func make_overlay_fullscreen():
 	screen_area = screen_size.x * screen_size.y
 	await get_tree().process_frame  # this hopefully reduce the lag at first start
 	get_tree().get_root().set_size(screen_size)
-	get_tree().get_root().set_position(Vector2i(0, 0))
+	var screen_position = DisplayServer.screen_get_position(id_screen)
+	get_tree().get_root().set_position(screen_position)
 
 
 func draw_censor(detections: String):

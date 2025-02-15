@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cajbx2tg64fol"]
 
 [ext_resource type="FontFile" uid="uid://dwrgp5u4tsq8f" path="res://Orbitron-VariableFont_wght.ttf" id="1_5l2i5"]
-[ext_resource type="Script" path="res://BoxExamples/full_screen_text_creator.gd" id="1_hk23s"]
+[ext_resource type="Script" uid="uid://b8ulrftj4whj4" path="res://BoxExamples/full_screen_text_creator.gd" id="1_hk23s"]
 
 [sub_resource type="Gradient" id="Gradient_pndd7"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -34,12 +34,13 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(1, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 1, 1, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/shadow_outline_size = 2
 theme_override_constants/outline_size = 3
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_outline_size = 2
+theme_override_constants/line_separation = 20
 theme_override_fonts/normal_font = ExtResource("1_5l2i5")
-theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/normal_font_size = 20
 text = "Beta Keep Out Beta Keep Out Beta Keep Out Beta Keep Out Beta Keep Out Beta Keep Out Beta Keep Out Beta Keep Out Beta Keep Out Beta Keep Out Beta Keep Out Beta Keep Out Beta Keep Out Beta Keep Out Beta Keep Out Beta Keep Out Beta Keep Out Beta Keep Out Beta Keep Out Beta Keep Out eta Keep Out Beta Keep Out "
 scroll_active = false
 autowrap_mode = 1

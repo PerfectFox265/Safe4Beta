@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dv72xfigq8dwt"]
 
-[ext_resource type="Script" path="res://Menu.gd" id="1_ovk6f"]
+[ext_resource type="Script" uid="uid://c18fown7w6cks" path="res://Menu.gd" id="1_ovk6f"]
 [ext_resource type="FontFile" uid="uid://dwrgp5u4tsq8f" path="res://Orbitron-VariableFont_wght.ttf" id="2_g8qyj"]
 
 [sub_resource type="Gradient" id="Gradient_twi4c"]
@@ -38,6 +38,7 @@ layout_mode = 2
 [node name="TabContainer" type="TabContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+current_tab = 0
 
 [node name="Game" type="MarginContainer" parent="PanelContainer/VBoxContainer/TabContainer"]
 layout_mode = 2
@@ -45,6 +46,7 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
+metadata/_tab_index = 0
 
 [node name="Vbox" type="VBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Game"]
 layout_mode = 2
@@ -161,6 +163,7 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
+metadata/_tab_index = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer/TabContainer/Censor"]
 custom_minimum_size = Vector2(400, 0)
@@ -199,8 +202,8 @@ autowrap_mode = 2
 
 [node name="OptionButton" type="OptionButton" parent="PanelContainer/VBoxContainer/TabContainer/Censor/ScrollContainer/Vbox"]
 layout_mode = 2
-item_count = 5
 selected = 0
+item_count = 5
 popup/item_0/text = "Black Box"
 popup/item_0/id = 0
 popup/item_1/text = "Glitched Box"
@@ -282,6 +285,7 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
+metadata/_tab_index = 2
 
 [node name="Vbox" type="VBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Audio"]
 layout_mode = 2
@@ -319,6 +323,7 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
+metadata/_tab_index = 3
 
 [node name="Vbox" type="VBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/Performance"]
 custom_minimum_size = Vector2(380, 0)

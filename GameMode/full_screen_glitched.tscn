@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://crrvnqcemo2pe"]
 
-[ext_resource type="Script" path="res://FullScreenGlitched.gd" id="1_bnxsr"]
-[ext_resource type="Shader" path="res://BoxExamples/glitched.gdshader" id="2_3d6hb"]
+[ext_resource type="Script" uid="uid://bscy4x1aya0ri" path="res://FullScreenGlitched.gd" id="1_bnxsr"]
+[ext_resource type="Shader" uid="uid://b5mvudrh13pil" path="res://BoxExamples/glitched.gdshader" id="2_3d6hb"]
 [ext_resource type="AudioStream" uid="uid://sx7th2bticnd" path="res://audio/ui/glitch_0.ogg" id="3_u80pk"]
 [ext_resource type="AudioStream" uid="uid://gws62sngnga3" path="res://audio/ui/glitch_1.ogg" id="4_7a6di"]
 [ext_resource type="AudioStream" uid="uid://b85d7fdbp05m7" path="res://audio/ui/glitch_2.ogg" id="5_8nitt"]
@@ -20,11 +20,8 @@ shader_parameter/shake_color_rate = 0.01
 random_pitch = 1.2
 streams_count = 3
 stream_0/stream = ExtResource("3_u80pk")
-stream_0/weight = 1.0
 stream_1/stream = ExtResource("4_7a6di")
-stream_1/weight = 1.0
 stream_2/stream = ExtResource("5_8nitt")
-stream_2/weight = 1.0
 
 [node name="FullScreenGlitched" type="Node2D"]
 script = ExtResource("1_bnxsr")

@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://5aggk6q0epkm"]
 
 [ext_resource type="PackedScene" uid="uid://ht77w61hmtbs" path="res://BoxExamples/base_censor_box.tscn" id="1_4slas"]
-[ext_resource type="Script" path="res://BoxExamples/GlitchedBox.gd" id="1_we0pr"]
-[ext_resource type="Shader" path="res://BoxExamples/glitched.gdshader" id="2_7x20x"]
+[ext_resource type="Script" uid="uid://duapf1igvnewl" path="res://BoxExamples/GlitchedBox.gd" id="1_we0pr"]
+[ext_resource type="Shader" uid="uid://b5mvudrh13pil" path="res://BoxExamples/glitched.gdshader" id="2_7x20x"]
 [ext_resource type="Texture2D" uid="uid://pa1t21f5c02h" path="res://BoxExamples/smooth_border.png" id="3_s17jl"]
 
 [sub_resource type="Gradient" id="Gradient_mii4r"]
@@ -14,12 +14,12 @@ gradient = SubResource("Gradient_mii4r")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kgq64"]
 shader = ExtResource("2_7x20x")
+shader_parameter/back_screen_texture = SubResource("GradientTexture1D_4kiuh")
 shader_parameter/shake_power = 0.03
 shader_parameter/shake_rate = 0.8
 shader_parameter/shake_speed = 10.0
 shader_parameter/shake_block_size = 40.5
 shader_parameter/shake_color_rate = 0.005
-shader_parameter/back_screen_texture = SubResource("GradientTexture1D_4kiuh")
 
 [node name="GlitchedBox" instance=ExtResource("1_4slas")]
 script = ExtResource("1_we0pr")

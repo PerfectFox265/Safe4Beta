@@ -14,9 +14,10 @@ const messages = [
 func _ready():
 	super._ready()
 	var font_size = int($TextureRect.size.y/6)
+	$TextureRect.position += Vector2((randf()-0.5)*0.2*$TextureRect.size.x, (randf()-0.5)*0.2*$TextureRect.size.y)
 	$TextureRect/Label.add_theme_font_size_override("font_size", font_size)
-	hide_text()
 	timer += 1.0
+	hide_text()
 
 
 func set_text():

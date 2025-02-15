@@ -25,6 +25,7 @@ func _process(_delta):
 		BetaData.time_last_detection = Time.get_ticks_msec()
 	if client != null and client.get_status() == StreamPeerTCP.STATUS_CONNECTED and client.get_available_bytes() > 0:
 		var detections = client.get_utf8_string(client.get_available_bytes())
+		detections = get_last_array(detections)
 		print("Detections: ", detections)
 		BetaData.new_detections(detections)
 		BetaData.overlay.draw_censor(detections)
@@ -35,3 +36,9 @@ func restart_detector(time_between_detection):
 	pid_detector = OS.create_process(DETECTOR_PATH, [time_between_detection, BetaData.overlay.id_screen+1])
 	print("Detector now use ", time_between_detection, " sec CD.")
 	
+
+func get_last_array(detections: String) -> String:
+	# delete the retarded packets = first arrays
+	var splitted_packets = detections.split("][")
+	var prefix = "" if len(splitted_packets) == 1 else "["
+	return prefix + splitted_packets[-1]

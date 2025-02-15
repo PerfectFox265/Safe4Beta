@@ -24,6 +24,7 @@ var box_scn_types = [BASE_CENSOR_BOX, GLITCHED_BOX, SUBLIM_MESSAGE_BOX,
 var custom_texture: ImageTexture = null
 
 const FULL_SCREEN_TEXT_CREATOR = preload("res://BoxExamples/full_screen_text_creator.tscn")
+var current_fullscreen_text_texture_creator: FSTextCreator = null
 
 const _labels = [
 	"FEMALE_GENITALIA_COVERED",
@@ -103,16 +104,21 @@ func _exit_tree():
 	save_config_json()
 
 func load_config_json():
-	if FileAccess.file_exists(config_path):
-		var file = FileAccess.open(config_path, FileAccess.READ)
-		var saved_data: Dictionary = JSON.parse_string(file.get_as_text())
-		for key in game_data.keys():
-			var saved_value = saved_data.get(key)
-			if saved_value != null: game_data[key] = saved_value
-		file.close()
-		return true
-	print("No config file. Creating a new save...")
-	return false
+	if not FileAccess.file_exists(config_path):
+		print("No config file. Creating a new save...")
+		return false
+	var file = FileAccess.open(config_path, FileAccess.READ)
+	var saved_data: Dictionary = JSON.parse_string(file.get_as_text())
+	file.close()
+	for key in game_data.keys():
+		var saved_value = saved_data.get(key)
+		if saved_value != null: game_data[key] = saved_value
+	game_data.lvl = int(game_data.lvl)
+	game_data.custom_censors = int(game_data.custom_censors)
+	game_data.custom_censor_mask = int(game_data.custom_censor_mask)
+	game_data.fps_screen_recorder = int(game_data.fps_screen_recorder)
+	return true
+	
 
 func apply_new_config(is_existing_save):
 	# most of nodes are not ready at this time
@@ -153,6 +159,7 @@ func censor_type_of_part(body_part : String, score : float):
 func new_detections(detections):
 	var current_time_detection = Time.get_ticks_msec()
 	self.sec_between_detection = (current_time_detection - time_last_detection) / 1000.0
+	#print(int(1.0/sec_between_detection + 0.5), " detec/sec")
 	self.time_last_detection = current_time_detection
 	var detections_array = JSON.parse_string(detections)
 	overlay.beta_voices.comment_detections(detections_array)
@@ -198,7 +205,7 @@ func trigger_harder_lvl():
 	game_data.lvl = min(3, game_data.lvl+1)
 	make_screen_glitched()
 	await get_tree().create_timer(1).timeout
-	overlay.beta_voices.get_node("lvl"+str(game_data.lvl)).play()
+	overlay.beta_voices.get_node("lvl"+str(int(game_data.lvl))).play()
 
 func trigger_lower_lvl():
 	game_data.score = 1
@@ -255,9 +262,11 @@ func update_warning(is_no_detection):
 			game_data.score = game_data.score / 2.0
 
 func new_fullscreen_text_texture(new_text: String):
-	var text_creator: FSTextCreator = FULL_SCREEN_TEXT_CREATOR.instantiate()
-	text_creator.set_size_and_text(overlay.screen_size, new_text)
-	overlay.add_child(text_creator)
+	if current_fullscreen_text_texture_creator != null:
+		current_fullscreen_text_texture_creator.queue_free()
+	current_fullscreen_text_texture_creator = FULL_SCREEN_TEXT_CREATOR.instantiate()
+	current_fullscreen_text_texture_creator.set_size_and_text(overlay.screen_size, new_text)
+	overlay.add_child(current_fullscreen_text_texture_creator)
 
 func update_fullscreen_text_texture_material(new_texture):
 	TEXT_CENSOR_BOX.instantiate().get_child(0).material.set_shader_parameter("fs_text_texture", new_texture)
